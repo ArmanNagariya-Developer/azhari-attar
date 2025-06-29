@@ -1,0 +1,792 @@
+:root {
+  --primary-color: #E91E63;
+  --text-color: #333;
+  --bg-color: #fff;
+  --border-color: #eee;
+  --card-bg: #fff;
+  --sidebar-bg: #fff;
+  --sans-font: 'Inter', 'Lato', Arial, sans-serif;
+}
+
+[data-theme="dark"] {
+  --primary-color: #FF4081;
+  --text-color: #fff;
+  --bg-color: #1a1a1a;
+  --border-color: #333;
+  --card-bg: #2a2a2a;
+  --sidebar-bg: #2a2a2a;
+  --sans-font: 'Inter', 'Lato', Arial, sans-serif;
+}
+
+body {
+  font-family: var(--sans-font);
+  background: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+h1, h2, h3 {
+  margin-top: 0;
+}
+
+/* Minimalist luxury base styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+#root {
+  max-width: 100vw;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Enhanced Responsive Design Utilities */
+.hidden-mobile {
+  display: block;
+}
+
+.hidden-desktop {
+  display: none;
+}
+
+.mobile-menu-toggle {
+  display: none;
+}
+
+/* Icon Button Styles */
+.icon-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  min-width: 44px;
+  min-height: 44px;
+  color: var(--text-color);
+  position: relative;
+}
+
+.icon-button:hover {
+  background: rgba(0, 0, 0, 0.05);
+  transform: scale(1.05);
+}
+
+[data-theme="dark"] .icon-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.icon-button:active {
+  transform: scale(0.95);
+}
+
+.icon-button:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Carousel Responsive Styles */
+.carousel-container {
+  touch-action: pan-y pinch-zoom;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.carousel-container * {
+  pointer-events: auto;
+}
+
+/* Enhanced touch targets for mobile */
+@media (max-width: 768px) {
+  .carousel-container {
+    cursor: grab;
+  }
+  
+  .carousel-container:active {
+    cursor: grabbing;
+  }
+  
+  /* Larger touch targets for dots on mobile */
+  .carousel-dot {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Tablet specific carousel styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .carousel-container {
+    cursor: grab;
+  }
+  
+  .carousel-container:active {
+    cursor: grabbing;
+  }
+}
+
+/* Desktop carousel styles */
+@media (min-width: 1025px) {
+  .carousel-container {
+    cursor: default;
+  }
+  
+  .carousel-container:hover {
+    cursor: pointer;
+  }
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--bg-color);
+  z-index: 1000;
+  padding: 2rem;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-nav.open {
+  transform: translateX(0);
+}
+
+.mobile-nav-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.mobile-nav-links a {
+  font-size: 1.2rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Responsive Grid Utilities */
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.responsive-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.responsive-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.responsive-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Responsive Typography */
+.responsive-text {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.responsive-heading {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+}
+
+.responsive-subheading {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+}
+
+/* Responsive Spacing */
+.responsive-padding {
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+.responsive-margin {
+  margin: clamp(1rem, 3vw, 2rem);
+}
+
+/* Enhanced Responsive Breakpoints */
+@media (max-width: 1400px) {
+  .container {
+    max-width: 1200px;
+    padding: 0 1.5rem;
+  }
+  
+  #root {
+    padding: 1.5rem;
+  }
+  
+  .responsive-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    max-width: 100%;
+    padding: 0 1.5rem;
+  }
+  
+  #root {
+    padding: 1.5rem;
+  }
+  
+  .responsive-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+  
+  #root {
+    padding: 1.25rem;
+  }
+  
+  .responsive-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+  
+  .responsive-grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  
+  .logo {
+    height: 5em;
+    padding: 1.25em;
+  }
+  
+  /* Hide desktop navigation on tablet */
+  .hidden-mobile {
+    display: none !important;
+  }
+  
+  /* Show mobile menu toggle on tablet */
+  .mobile-menu-toggle {
+    display: block !important;
+  }
+  
+  /* Show mobile nav overlay on tablet */
+  .mobile-nav-overlay {
+    display: block;
+  }
+  
+  /* Mobile and Tablet Product Card Icons */
+  .touch-actions {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+  
+  /* Ensure icons are always visible on mobile/tablet */
+  .product-card-icons {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  /* Force show product card action icons */
+  .product-card-icons,
+  .product-card-icons * {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+  
+  /* Ensure AnimatePresence shows content on mobile/tablet */
+  [data-framer-motion-animate-presence] {
+    display: block !important;
+  }
+  
+  [data-framer-motion-animate-presence] .product-card-icons {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  /* Price-side icons styling */
+  .price-side-icons {
+    display: flex !important;
+    gap: 0.3rem;
+    align-items: center;
+  }
+  
+  .price-side-icons > div {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .price-side-icons > div:hover {
+    transform: scale(1.1);
+  }
+  
+  .price-side-icons > div:active {
+    transform: scale(0.95);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  #root {
+    padding: 1rem;
+  }
+  
+  .hidden-mobile {
+    display: none !important;
+  }
+  
+  .hidden-desktop {
+    display: block;
+  }
+  
+  .mobile-menu-toggle {
+    display: block !important;
+  }
+  
+  /* Mobile Navigation Styles */
+  .mobile-nav {
+    display: block;
+  }
+  
+  /* Show mobile nav overlay on mobile */
+  .mobile-nav-overlay {
+    display: block;
+  }
+  
+  /* Adjust logo size for mobile */
+  .logo {
+    height: 4em;
+    padding: 1em;
+  }
+  
+  .responsive-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .responsive-grid-2 {
+    grid-template-columns: 1fr;
+  }
+  
+  .responsive-grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+  
+  .responsive-flex {
+    flex-direction: column;
+  }
+  
+  /* Enhanced mobile icon buttons */
+  .icon-button {
+    padding: 0.4rem;
+    min-width: 40px;
+    min-height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+  
+  #root {
+    padding: 0.75rem;
+  }
+  
+  .logo {
+    height: 3em;
+    padding: 0.75em;
+  }
+  
+  .responsive-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .responsive-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Smaller icon buttons for very small screens */
+  .icon-button {
+    padding: 0.3rem;
+    min-width: 36px;
+    min-height: 36px;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+  
+  #root {
+    padding: 0.5rem;
+  }
+  
+  .logo {
+    height: 2.5em;
+    padding: 0.5em;
+  }
+  
+  .responsive-grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    max-width: 100%;
+    padding: 0 2rem;
+  }
+  
+  #root {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1400px;
+    padding: 0 2rem;
+  }
+  
+  #root {
+    padding: 2rem;
+  }
+  
+  .responsive-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1600px;
+    padding: 0 2.5rem;
+  }
+  
+  #root {
+    padding: 2.5rem;
+  }
+  
+  .responsive-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .hover-effect {
+    display: none;
+  }
+  
+  /* Show action buttons on touch devices */
+  .touch-actions {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  /* Enhanced touch targets */
+  .icon-button {
+    min-width: 48px;
+    min-height: 48px;
+    padding: 0.6rem;
+  }
+  
+  /* Larger touch targets for very small screens */
+  @media (max-width: 480px) {
+    .icon-button {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0.5rem;
+    }
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  :root {
+    --border-color: #000;
+    --text-color: #000;
+  }
+  
+  [data-theme="dark"] {
+    --border-color: #fff;
+    --text-color: #fff;
+  }
+  
+  .icon-button {
+    border: 1px solid var(--text-color);
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Landscape Mobile Optimization */
+@media (max-width: 768px) and (orientation: landscape) {
+  .mobile-nav {
+    padding: 1rem;
+  }
+  
+  .mobile-nav-links {
+    margin-top: 1rem;
+    gap: 0.5rem;
+  }
+  
+  .mobile-nav-links a {
+    padding: 0.5rem 0;
+    font-size: 1rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .mobile-nav,
+  .mobile-menu-toggle,
+  button {
+    display: none !important;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+  }
+  
+  .container {
+    max-width: none;
+    padding: 0;
+  }
+  
+  #root {
+    padding: 0;
+  }
+}
+
+/* Modern Responsive Button Styles */
+.responsive-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 0.85rem 2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(233, 30, 99, 0.08);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s;
+  outline: none;
+  min-width: 120px;
+  min-height: 44px;
+  user-select: none;
+}
+.responsive-btn:active {
+  background: #c2185c1a;
+  transform: scale(0.97);
+}
+.responsive-btn:hover,
+.responsive-btn:focus {
+  background: #ad1457;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(233, 30, 99, 0.15);
+}
+.responsive-btn:focus {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* WhatsApp button override */
+.responsive-btn.whatsapp-btn {
+  background: #25D366;
+  color: #fff;
+}
+.responsive-btn.whatsapp-btn:hover,
+.responsive-btn.whatsapp-btn:focus {
+  background: #1ebe5d;
+  color: #fff;
+}
+.responsive-btn.whatsapp-btn:active {
+  background: #128c4b;
+}
+
+/* Back to Shop button override */
+.responsive-btn.back-to-shop-btn {
+  background: transparent;
+  color: var(--text-color);
+  border: 1.5px solid var(--border-color);
+  font-weight: 500;
+  padding: 0.7rem 1.5rem;
+  min-width: 0;
+}
+.responsive-btn.back-to-shop-btn:hover,
+.responsive-btn.back-to-shop-btn:focus {
+  background: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
+}
+
+@media (max-width: 700px) {
+  .responsive-btn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.7rem 1rem;
+    min-width: 0;
+  }
+  .responsive-btn.back-to-shop-btn {
+    font-size: 0.98rem;
+    padding: 0.6rem 0.8rem;
+  }
+}
+
+/* Prevent horizontal scroll globally */
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Prevent horizontal scroll on specific elements */
+[style*="resultsInfoStyle"],
+[style*="mainContentStyle"],
+[style*="gridStyles"],
+[style*="pageContainerStyle"] {
+  max-width: 100% !important;
+  width: 100% !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
