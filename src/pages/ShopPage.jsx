@@ -138,7 +138,7 @@ const ShopPage = () => {
       `*Shop Link:* ${window.location.origin}/shop\n\n` +
       `Discover our exclusive collection of luxury fragrances!`;
 
-    const whatsappUrl = `https://wa.me/9979219073?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/+919979219073?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
     setShowWhatsAppConfirm(false);
   };

@@ -103,7 +103,7 @@ const ProductCard = ({ product, viewMode = 'grid', isMobile: propIsMobile, isTab
                    `*Shop Link:* ${window.location.origin}/product/${product.id}\n\n` +
                    `I'm interested in this product! Please provide more details.`;
     
-    const whatsappUrl = `https://wa.me/9979219073?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/+919979219073?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
     setShowWhatsAppConfirm(false);
   };
